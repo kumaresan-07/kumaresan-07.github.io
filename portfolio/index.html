@@ -3,236 +3,391 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Project Mockups — Laptop Overlay</title>
+  <title>Kumaresan C — Frontend Developer</title>
+  <meta name="description" content="Kumaresan C — Frontend Developer. Projects: Amazon Clone, Kuppusamy Car Rental, FewInfo contribution. Built with HTML, Tailwind, JS." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kumaresan C — Frontend Developer">
+  <meta property="og:description" content="Frontend projects: Amazon Clone · Kuppusamy Car Rental · FewInfo contributions">
+  <meta property="og:type" content="website">
+  <!-- If you have a cover image, replace og:image URL -->
+  <!-- <meta property="og:image" content="https://yourdomain.com/assets/og-image.png"> -->
+
+  <!-- Tailwind CDN (quick start) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS (animate on scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <style>
     :root{
-      --mockup-width: 900px; /* ideal design width; container scales down */
-      /* These percentages align the screenshot inside the SVG screen area.
-         If you replace the SVG, update these percentages to match the screen rect in the SVG. */
-      --screen-top: 11.6667%;    /* 70 / 600 */
-      --screen-left: 8.8889%;    /* 80 / 900 */
-      --screen-width: 82.2222%;  /* 740 / 900 */
-      --screen-height: 70%;      /* 420 / 600 */
-      --bg: linear-gradient(120deg,#ff9a3c 0%, #ffd160 100%); /* orange-yellow background */
+      --accent: #ff7a18; /* orange */
+      --accent-2: #ffd36e;
+      --bg: #0f1724;
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.06);
+      --container: 1100px;
+
+      /* SVG screen mapping (if you swap SVG, update these) */
+      --screen-top: 11.6667%;
+      --screen-left: 8.8889%;
+      --screen-width: 82.2222%;
+      --screen-height: 70%;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f3f4f6;
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
+    /* Global */
+    html,body { height:100%; margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background: linear-gradient(180deg,#f8fafc 0%, #f1f5f9 100%); color:#0f1724; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    a { color:inherit; text-decoration:none; }
 
-    .page {
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px;
-      box-sizing:border-box;
-    }
+    /* Container */
+    .site { max-width:var(--container); margin:0 auto; padding:36px 20px; }
 
-    /* Grid for multiple mockups */
-    .mockup-grid {
-      display:grid;
-      gap:28px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      width:min(1200px, 100%);
-    }
+    /* Header nav */
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:24px; }
+    .brand { font-weight:700; display:flex; gap:10px; align-items:center; }
+    .brand img { width:40px; height:40px; border-radius:999px; object-fit:cover; border:2px solid rgba(0,0,0,0.06); }
+    nav { display:flex; gap:12px; align-items:center; }
 
-    /* Each mockup container scales responsively */
-    .mockup {
-      --w: var(--mockup-width);
-      width:100%;
-      max-width:var(--w);
-      aspect-ratio: 16 / 9; /* keep a pleasant aspect ratio for layout — actual SVG scales inside */
-      position:relative;
-      border-radius:12px;
-      overflow:visible;
-      background: var(--bg);
-      padding:20px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.15);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .mockup:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 50px rgba(15,23,42,0.18);
-    }
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1fr 420px; gap:36px; align-items:center; padding:36px 0; }
+    .hero-left h1 { font-size:clamp(28px,4vw,44px); line-height:1.03; margin:0 0 12px 0; }
+    .hero-left p.lead { margin:0 0 18px 0; color:var(--muted); max-width:64ch; }
+    .cta { display:flex; gap:12px; margin-top:8px; }
+    .btn { padding:10px 16px; border-radius:10px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
+    .btn-primary { background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; box-shadow: 0 8px 30px rgba(255,122,24,0.18); }
+    .btn-ghost { border:1px solid rgba(15,23,36,0.08); background:white; color:#0f1724; }
 
-    /* The screenshot that sits 'behind' the SVG screen */
-    .mockup .project-screen {
+    /* Profile card */
+    .profile-card { background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8)); border-radius:16px; padding:18px; display:flex; gap:14px; align-items:center; box-shadow: 0 14px 30px rgba(2,6,23,0.06); }
+    .profile-photo { width:92px; height:92px; border-radius:14px; overflow:hidden; flex:0 0 92px; }
+    .profile-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .profile-info h3 { margin:0; font-size:18px; }
+    .profile-info p { margin:6px 0 0 0; color:var(--muted); font-size:14px; }
+
+    /* Sections */
+    section { padding:36px 0; }
+    h2.section-title { font-size:20px; margin:0 0 18px 0; display:flex; align-items:center; gap:10px; }
+
+    /* Skills grid */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; }
+    .skill { background:white; padding:12px; border-radius:12px; display:flex; gap:10px; align-items:center; box-shadow:0 6px 18px rgba(2,6,23,0.04); transition:transform .18s ease; }
+    .skill:hover { transform:translateY(-6px); }
+
+    /* Projects grid */
+    .projects-grid { display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .project { background:linear-gradient(180deg,#fff,#fff); border-radius:12px; padding:12px; box-shadow:0 8px 30px rgba(2,6,23,0.06); transition:transform .18s ease; }
+    .project:hover { transform:translateY(-8px); }
+    .project-visual { position:relative; border-radius:10px; overflow:visible; background:linear-gradient(120deg,#ff9a3c 0%, #ffd160 100%); padding:16px; }
+    .project .caption { display:flex; justify-content:space-between; align-items:center; padding:12px 6px 0 6px; }
+
+    /* Mockup screen (sits under SVG) */
+    .project-screen {
       position:absolute;
-      top: var(--screen-top);
-      left: var(--screen-left);
-      width: var(--screen-width);
-      height: var(--screen-height);
-      object-fit: cover;
-      border-radius: 6px; /* subtle rounding */
-      display:block;
-      /* optional border/shadow to make screen pop a little */
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-      z-index: 1; /* beneath the SVG frame */
-      background: #fff;
+      top:var(--screen-top);
+      left:var(--screen-left);
+      width:var(--screen-width);
+      height:var(--screen-height);
+      object-fit:cover;
+      border-radius:6px;
+      z-index:1;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+      background:#fff;
+    }
+    .laptop-svg { position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+
+    /* Footer */
+    footer { text-align:center; padding:24px 0; color:var(--muted); font-size:14px; }
+
+    /* Dark mode toggle (simple) */
+    .mode-toggle { display:inline-flex; align-items:center; gap:8px; cursor:pointer; padding:8px; border-radius:999px; background:rgba(0,0,0,0.04); }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { order:1; }
+      .hero-right { order:2; }
     }
 
-    /* SVG laptop frame sits above the screenshot */
-    .mockup .laptop-svg {
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      z-index: 2;
-      pointer-events: none; /* allow clicks to pass through if needed */
-    }
+    /* Accessibility focus */
+    a:focus, button:focus { outline:3px solid rgba(99,102,241,0.18); outline-offset:3px; }
 
-    /* Caption below */
-    .caption {
-      margin-top:10px;
-      text-align:left;
-      font-size:14px;
-      color:#0f172a;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .project-title { font-weight:600; }
-    .techs { font-size:12px; color:#374151; }
-
-    /* Make container scale down nicely on small screens */
-    @media (max-width:500px){
-      .mockup { padding:12px; border-radius:10px; }
-      :root { --screen-top: 12%; --screen-left: 9%; --screen-width:82%; --screen-height:70%; }
-    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="mockup-grid">
+  <div class="site">
 
-      <!-- Mockup item 1: Amazon Clone -->
-      <figure class="mockup" aria-labelledby="title-amazon">
-        <!-- Replace src with your screenshot path -->
-        <img class="project-screen" src="assets/amazon-clone.png" alt="Amazon Clone screenshot">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <!-- GitHub avatar used as default profile image -->
+        <img src="https://avatars.githubusercontent.com/u/153323962?v=4" alt="Kumaresan avatar" width="40" height="40">
+        <div>
+          <div style="font-weight:700;">Kumaresan C</div>
+          <div style="font-size:12px;color:var(--muted);">Frontend Developer — IT Student</div>
+        </div>
+      </div>
 
-        <!-- Inline SVG laptop frame.
-             The viewBox is 0 0 900 600; the screen rectangle in the SVG is at x=80 y=70 width=740 height=420
-             So CSS percentages are calculated from those numbers (used in :root variables). -->
-        <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-          <!-- subtle outer shadow / bezel -->
-          <defs>
-            <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#000" flood-opacity="0.15"/>
-            </filter>
-            <linearGradient id="bezelGrad" x1="0" x2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#000000" stop-opacity="0.08"/>
-            </linearGradient>
-          </defs>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
 
-          <!-- laptop body -->
-          <g filter="url(#softShadow)">
-            <rect x="40" y="30" rx="22" ry="22" width="820" height="420" fill="url(#bezelGrad)"></rect>
-            <!-- screen bezel (we intentionally leave the inner screen transparent) -->
-            <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1120" opacity="0.6"></rect>
+        <!-- Dark/Light toggle -->
+        <button id="modeToggle" class="mode-toggle" aria-pressed="false" title="Toggle dark mode">
+          <svg id="modeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="12" cy="12" r="3" stroke="#000" stroke-width="1.5"></circle>
+          </svg>
+        </button>
+      </nav>
+    </header>
 
-            <!-- transparent screen hole (we visually represent it but keep fill none so screenshot shows through) -->
-            <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-left" data-aos="fade-right">
+        <h1>Hello — I’m <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; color:transparent;">Kumaresan C</span></h1>
+        <p class="lead">I build responsive, accessible front-end experiences. I’m an IT student at Kumarasamy College of Engineering and I love crafting UI that’s both beautiful and functional.</p>
 
-            <!-- subtle gloss on top-left -->
-            <path d="M90 80 C220 40, 400 40, 540 80 L540 110 C400 80, 220 80, 90 110 Z"
-                  fill="rgba(255,255,255,0.02)"></path>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="mailto:kumaresankavi07@gmail.com">Contact Me</a>
+        </div>
 
-            <!-- bottom hinge / keyboard area -->
-            <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
-            <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
-          </g>
+        <!-- small quick links -->
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+          <a href="https://github.com/kumaresan-07" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a> ·
+          <a href="https://linkedin.com/in/kumaresan-c-559b24329" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a> ·
+          <a href="#" onclick="downloadResume()" aria-label="Download resume">Resume</a>
+        </div>
+      </div>
 
-          <!-- small camera indicator -->
-          <circle cx="450" cy="70" r="4" fill="#0f1724"></circle>
-        </svg>
+      <div class="hero-right" data-aos="fade-left">
+        <div class="profile-card" role="region" aria-label="Profile card">
+          <div class="profile-photo">
+            <!-- Use your GitHub avatar (always reflects latest) -->
+            <img src="https://avatars.githubusercontent.com/u/153323962?v=4" alt="Kumaresan profile">
+          </div>
+          <div class="profile-info">
+            <h3>Kumaresan C</h3>
+            <p style="color:var(--muted); margin:6px 0 0 0;">Frontend Developer • IT Student at Kumarasamy College of Engineering</p>
+            <div style="margin-top:10px; display:flex; gap:8px;">
+              <a class="btn btn-ghost" href="mailto:kumaresankavi07@gmail.com">Email</a>
+              <a class="btn btn-ghost" href="https://github.com/kumaresan-07" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
 
-        <!-- caption -->
-        <figcaption class="caption">
-          <span id="title-amazon" class="project-title">Amazon Clone</span>
-          <span class="techs">HTML · CSS · JavaScript</span>
-        </figcaption>
-      </figure>
+        <!-- floating icons (just visual) -->
+        <div style="margin-top:12px; display:flex; gap:8px; justify-content:center;">
+          <div style="background:white;padding:8px;border-radius:8px;box-shadow:0 8px 20px rgba(2,6,23,0.06);">HTML</div>
+          <div style="background:white;padding:8px;border-radius:8px;box-shadow:0 8px 20px rgba(2,6,23,0.06);">CSS</div>
+          <div style="background:white;padding:8px;border-radius:8px;box-shadow:0 8px 20px rgba(2,6,23,0.06);">JavaScript</div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Mockup item 2: Kuppusamy Car Rental (reuse same SVG and % values) -->
-      <figure class="mockup" aria-labelledby="title-car">
-        <img class="project-screen" src="assets/project2.png" alt="Kuppusamy Car Rental screenshot">
-        <!-- reuse the same inline SVG frame -->
-        <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <filter id="softShadow2" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#000" flood-opacity="0.15"/>
-            </filter>
-            <linearGradient id="bezelGrad2" x1="0" x2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#000000" stop-opacity="0.08"/>
-            </linearGradient>
-          </defs>
+    <!-- About (short) -->
+    <section id="about" data-aos="fade-up">
+      <h2 class="section-title">About</h2>
+      <p style="color:var(--muted); max-width:72ch;">I focus on building responsive front-end interfaces with attention to performance and accessibility. I enjoy learning new tools, contributing to open-source, and improving UX through small, thoughtful details.</p>
+    </section>
 
-          <g filter="url(#softShadow2)">
-            <rect x="40" y="30" rx="22" ry="22" width="820" height="420" fill="url(#bezelGrad2)"></rect>
-            <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1120" opacity="0.6"></rect>
-            <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
-            <path d="M90 80 C220 40, 400 40, 540 80 L540 110 C400 80, 220 80, 90 110 Z" fill="rgba(255,255,255,0.02)"></path>
-            <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
-            <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
-          </g>
-          <circle cx="450" cy="70" r="4" fill="#0f1724"></circle>
-        </svg>
+    <!-- Skills -->
+    <section id="skills" data-aos="fade-up">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid" style="margin-top:12px;">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML" width="28"> <div style="font-weight:600">HTML</div></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS" width="28"> <div style="font-weight:600">CSS</div></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JS" width="28"> <div style="font-weight:600">JavaScript</div></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="28"> <div style="font-weight:600">React</div></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind" width="28"> <div style="font-weight:600">Tailwind</div></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg" alt="Git" width="28"> <div style="font-weight:600">Git</div></div>
+      </div>
+    </section>
 
-        <figcaption class="caption">
-          <span id="title-car" class="project-title">Kuppusamy Car Rental</span>
-          <span class="techs">HTML · Tailwind · JS</span>
-        </figcaption>
-      </figure>
+    <!-- Projects -->
+    <section id="projects" data-aos="fade-up">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid" style="margin-top:14px;">
 
-      <!-- Mockup item 3: FewInfo Contribution -->
-      <figure class="mockup" aria-labelledby="title-fewinfo">
-        <img class="project-screen" src="assets/project3.png" alt="FewInfo contribution screenshot">
-        <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <filter id="softShadow3" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#000" flood-opacity="0.15"/>
-            </filter>
-            <linearGradient id="bezelGrad3" x1="0" x2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#000000" stop-opacity="0.08"/>
-            </linearGradient>
-          </defs>
+        <!-- Project 1: Amazon Clone -->
+        <article class="project" data-aos="zoom-in">
+          <div class="project-visual" style="height:220px; position:relative;">
+            <!-- Replace src with your actual screenshot file (place in assets/) -->
+            <img class="project-screen" src="assets/amazon-clone.png" alt="Amazon Clone screenshot">
+            <!-- Inline SVG laptop frame (transparent screen area) -->
+            <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="10" stdDeviation="22" flood-color="#000" flood-opacity="0.16"/>
+                </filter>
+                <linearGradient id="bezelGrad" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0.06"/>
+                </linearGradient>
+              </defs>
+              <g filter="url(#softShadow)">
+                <rect x="40" y="30" rx="20" ry="20" width="820" height="420" fill="url(#bezelGrad)"></rect>
+                <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1220" opacity="0.6"></rect>
+                <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
+                <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
+                <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
+              </g>
+            </svg>
+          </div>
 
-          <g filter="url(#softShadow3)">
-            <rect x="40" y="30" rx="22" ry="22" width="820" height="420" fill="url(#bezelGrad3)"></rect>
-            <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1120" opacity="0.6"></rect>
-            <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
-            <path d="M90 80 C220 40, 400 40, 540 80 L540 110 C400 80, 220 80, 90 110 Z" fill="rgba(255,255,255,0.02)"></path>
-            <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
-            <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
-          </g>
-          <circle cx="450" cy="70" r="4" fill="#0f1724"></circle>
-        </svg>
+          <div class="caption">
+            <div>
+              <div style="font-weight:700;">Amazon Clone</div>
+              <div style="color:var(--muted); font-size:13px;">A responsive e-commerce UI inspired by Amazon.</div>
+            </div>
+            <div style="text-align:right; color:var(--muted); font-size:13px;">HTML · CSS · JavaScript</div>
+          </div>
+        </article>
 
-        <figcaption class="caption">
-          <span id="title-fewinfo" class="project-title">FewInfo Contribution</span>
-          <span class="techs">React · API · Open Source</span>
-        </figcaption>
-      </figure>
+        <!-- Project 2: Kuppusamy Car Rental -->
+        <article class="project" data-aos="zoom-in" data-aos-delay="120">
+          <div class="project-visual" style="height:220px; position:relative;">
+            <img class="project-screen" src="assets/project2.png" alt="Kuppusamy Car Rental screenshot">
+            <!-- reuse the laptop SVG -->
+            <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g>
+                <rect x="40" y="30" rx="20" ry="20" width="820" height="420" fill="rgba(255,255,255,0.12)"></rect>
+                <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1220" opacity="0.6"></rect>
+                <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
+                <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
+                <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
+              </g>
+            </svg>
+          </div>
+          <div class="caption">
+            <div>
+              <div style="font-weight:700;">Kuppusamy Car Rental</div>
+              <div style="color:var(--muted); font-size:13px;">Car rental booking platform with modern UI.</div>
+            </div>
+            <div style="text-align:right; color:var(--muted); font-size:13px;">HTML · Tailwind · JS</div>
+          </div>
+        </article>
 
-    </div>
+        <!-- Project 3: FewInfo Contribution -->
+        <article class="project" data-aos="zoom-in" data-aos-delay="240">
+          <div class="project-visual" style="height:220px; position:relative;">
+            <img class="project-screen" src="assets/project3.png" alt="FewInfo contribution screenshot">
+            <svg class="laptop-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g>
+                <rect x="40" y="30" rx="20" ry="20" width="820" height="420" fill="rgba(255,255,255,0.12)"></rect>
+                <rect x="60" y="50" rx="12" ry="12" width="780" height="380" fill="#0b1220" opacity="0.6"></rect>
+                <rect x="80" y="70" width="740" height="420" rx="8" ry="8" fill="none"></rect>
+                <rect x="0" y="440" width="900" height="110" rx="26" fill="#0b1220" opacity="0.9"></rect>
+                <rect x="60" y="460" width="780" height="60" rx="10" fill="#0f1724" opacity="0.5"></rect>
+              </g>
+            </svg>
+          </div>
+          <div class="caption">
+            <div>
+              <div style="font-weight:700;">FewInfo Contribution</div>
+              <div style="color:var(--muted); font-size:13px;">Open-source contributions and API integrations.</div>
+            </div>
+            <div style="text-align:right; color:var(--muted); font-size:13px;">React · API</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" data-aos="fade-up">
+      <h2 class="section-title">Contact</h2>
+      <p style="color:var(--muted);">Want to collaborate or see specific code? Shoot me an email — <a href="mailto:kumaresankavi07@gmail.com" class="font-semibold" style="color:var(--accent);">kumaresankavi07@gmail.com</a></p>
+
+      <!-- Optional: example contact form (EmailJS or Formspree) -->
+      <!--
+      <form id="contactForm">
+        <input name="name" placeholder="Your name" required />
+        <input name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+      -->
+    </section>
+
+    <footer>
+      &copy; <span id="year"></span> Kumaresan C — Built with ❤️ • <a href="https://github.com/kumaresan-07" target="_blank">github.com/kumaresan-07</a>
+    </footer>
+
   </div>
 
-  <!-- Optional: small script to auto-scale (not necessary but helpful) -->
+  <!-- Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
   <script>
-    /* If you replace the SVG with a different one and the screen coords change,
-       update the CSS :root percentages at the top to keep the screenshot aligned. */
+    /* Init AOS */
+    AOS.init({ once: true, duration: 700, easing: 'ease-in-out' });
+
+    /* Typed effect in h1 subline — create a small dynamic typed sentence */
+    // We'll append a small typed subline under the main heading dynamically
+    (function() {
+      const hero = document.querySelector('.hero-left');
+      const p = document.createElement('p');
+      p.style.marginTop = '12px';
+      p.style.color = 'var(--muted)';
+      p.id = 'typed-sub';
+      hero.appendChild(p);
+
+      new Typed('#typed-sub', {
+        strings: ['Frontend Developer', 'UI-focused', 'JavaScript Enthusiast'],
+        typeSpeed: 45,
+        backSpeed: 30,
+        backDelay: 1500,
+        loop: true,
+        showCursor: true
+      });
+    })();
+
+    /* Dark mode toggle (simple body class) */
+    (function(){
+      const btn = document.getElementById('modeToggle');
+      const icon = document.getElementById('modeIcon');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let dark = localStorage.getItem('darkMode') === 'true' || prefersDark;
+
+      function applyMode() {
+        if (dark) {
+          document.documentElement.style.background = 'linear-gradient(180deg,#071226 0%, #071a2b 100%)';
+          document.body.style.color = '#e6eef8';
+          // invert icons and small UI bits
+          icon.querySelectorAll('path,circle').forEach(n => n.setAttribute('stroke','#fff'));
+          btn.setAttribute('aria-pressed','true');
+        } else {
+          document.documentElement.style.background = 'linear-gradient(180deg,#f8fafc 0%, #f1f5f9 100%)';
+          document.body.style.color = '#0f1724';
+          icon.querySelectorAll('path,circle').forEach(n => n.setAttribute('stroke','#000'));
+          btn.setAttribute('aria-pressed','false');
+        }
+      }
+      btn.addEventListener('click', () => {
+        dark = !dark;
+        localStorage.setItem('darkMode', dark);
+        applyMode();
+      });
+      applyMode();
+    })();
+
+    /* small helper to set current year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Resume download placeholder */
+    function downloadResume(){
+      // Replace with your resume path in the repo, e.g. "assets/Kumaresan_Resume.pdf"
+      const resumeUrl = 'assets/Kumaresan_Resume.pdf';
+      // if file exists in repo, trigger download; else fallback to open email
+      fetch(resumeUrl, { method: 'HEAD' })
+        .then(res => { if (res.ok) { window.open(resumeUrl, '_blank'); } else { window.location.href = 'mailto:kumaresankavi07@gmail.com?subject=Resume%20Request'; } })
+        .catch(_ => { window.location.href = 'mailto:kumaresankavi07@gmail.com?subject=Resume%20Request'; });
+    }
   </script>
 </body>
 </html>
