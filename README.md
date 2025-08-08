@@ -68,9 +68,9 @@ portfolio/
 ---
 
 ## 📬 Contact  
-💌 Email: [your.email@example.com](mailto:your.email@example.com)  
-🔗 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
-💻 GitHub: [github.com/yourusername](https://github.com/yourusername)  
+💌 Email: [your.email@example.com](mailto:kumaresankavi07@gmail.com)  
+🔗 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/kumaresan-07)  
+💻 GitHub: [github.com/yourusername](https://github.com/kumaresan-07)  
 
 ---
 
