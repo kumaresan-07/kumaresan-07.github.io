@@ -36,4 +36,49 @@ This project was crafted with love ❤️ and the following technologies:
 ---
 
 ## 📂 Project Structure  
+portfolio/
+│── assets/ # Images, icons, and media files
+│── css/ # Stylesheets
+│── js/ # JavaScript files
+│── index.html # Home page
+│── projects.html # Projects showcase
+│── contact.html # Contact form
+└── README.md # This file
+
+
+---
+
+## 📸 Screenshots  
+
+**Home Page**  
+![Home Screenshot](home.png)  
+
+**Projects Page**  
+![Projects Screenshot](projects.png)  
+
+---
+
+## ⚡ Features  
+- **Responsive Design** – Looks great on mobile, tablet, and desktop  
+- **Project Gallery** – Showcasing my best work  
+- **Contact Form** – Easy way for people to reach me  
+- **Animations** – Smooth scrolling & hover effects  
+- **Dark/Light Mode** *(optional)*  
+
+---
+
+## 📬 Contact  
+💌 Email: [your.email@example.com](mailto:your.email@example.com)  
+🔗 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
+💻 GitHub: [github.com/yourusername](https://github.com/yourusername)  
+
+---
+
+## 📜 License  
+This project is **MIT Licensed** – feel free to use and modify it, but please give credit.  
+
+---
+
+## ⭐ Support  
+If you like this project, consider giving it a ⭐ on GitHub — it really motivates me to create more!  
 
