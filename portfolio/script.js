@@ -28,3 +28,24 @@ document.querySelectorAll("section").forEach(section => {
   section.classList.add("hidden");
   observer.observe(section);
 });
+// Typing animation
+const typingText = document.getElementById("typing-text");
+const fullText = typingText.textContent;
+typingText.textContent = ""; // clear initial text
+let index = 0;
+
+function typeEffect() {
+  if (index < fullText.length) {
+    typingText.textContent += fullText.charAt(index);
+    index++;
+    setTimeout(typeEffect, 50); // speed in ms
+  } else {
+    typingText.style.borderRight = "none"; // remove cursor after typing
+  }
+}
+
+window.addEventListener("load", typeEffect);
+
+
+
+
