@@ -31,6 +31,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 }
 .logo {
   font-size: 1.5rem;
@@ -125,4 +126,15 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   background: rgba(10, 10, 10, 0.9);
+}
+
+/* ===== Animations ===== */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
