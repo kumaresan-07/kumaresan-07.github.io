@@ -27,7 +27,6 @@ jobs:
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          # Create the script file
           cat << 'EOF' > update_scoreboard.py
           import os
           import requests
