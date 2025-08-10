@@ -1,0 +1,25 @@
+permissions:
+  contents: write  # Required to push code
+
+jobs:
+  update-scoreboard:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configure Git
+      run: |
+        git config user.name "kumaresan-07"
+        git config user.email "your-email@example.com"
+
+    - name: Commit changes
+      run: |
+        git add CONTRIBUTOR_SCOREBOARD.md
+        git commit -m "Update contributor scoreboard" || echo "No changes to commit"
+
+    - name: Push changes
+      run: |
+        git remote set-url origin https://kumaresan-07:${{ secrets.GH_PAT }}@github.com/kumaresan-07/kumaresan-07.github.io.git
+        git push origin main
